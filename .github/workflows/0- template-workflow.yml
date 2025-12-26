@@ -1,0 +1,12 @@
+name: specify your name for your workflow
+on: this is going to be the actions you can chose https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+jobs:
+  the_name_of_the_job:
+    runs-on: the system we choose from here https://github.com/actions/runner-images
+    steps:
+      - name: the name of the step
+      - run: the command we have in our scripts in packages.json for example 
+      - name: the name of the step
+      - uses: we can have already prepared workflows from  https://github.com/marketplace?type=actions
+
+in general we can have several jobs like this . 

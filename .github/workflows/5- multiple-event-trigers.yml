@@ -1,0 +1,32 @@
+name: Test and deploy
+on: [push, workflow_dispatch]
+jobs:
+  Testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the Code
+        uses: actions/checkout@v6
+      - name: Install nodejs
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: installing dependencies
+        run: npm ci
+      - name: start the testing
+        run: npm run test
+  Deploy:
+    needs: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the Code
+        uses: actions/checkout@v6
+      - name: Install nodejs
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: installing dependencies
+        run: npm ci
+      - name: building the project
+        run: npm run build
+      - name: deploying the code
+        run: echo "Deploying the code ..."

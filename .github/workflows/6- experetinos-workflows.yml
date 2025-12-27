@@ -1,0 +1,8 @@
+name: using expressions in workflows
+on: workflow_dispatch
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print github obj
+        run: echo "${{github}}"

@@ -1,0 +1,35 @@
+name: triggering on pull request with opened and closed type
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main # main
+      - "dev-*" # dev-new dev-this-is-new
+      - "feat/**" #feat/new feat/new/button
+  workflow_dispatch:
+  push:
+    branches:
+      - main # main
+      - "dev-*" # dev-new dev-this-is-new
+      - "feat/**" #feat/new feat/new/button
+    paths-ignore:
+      - ".gitignore/workflows/*"
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: getting the code
+        uses: actions/checkout@v6
+      - name: setuping nodejs
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: installing dependencies
+        run: npm ci
+      - name: Lint Command
+        run: npm run lint
+      - name: deploy
+        run: npm run build
+#this link is for when we want a workflow to be skipped .
+#https://docs.github.com/en/actions/how-tos/manage-workflow-runs/skip-workflow-runs

@@ -62,4 +62,4 @@ jobs:
       - name: Show script file
         run: echo "${{ needs.build.outputs.script }}"
       - name: Deploy project
-        run: npm run deploy
+        run: echo "Deploying ."
